@@ -1,7 +1,7 @@
 const QuestionPage:React.FC = () => {
     return(
         <div>
-            question page
+            question page test
         </div>
     )
 }
