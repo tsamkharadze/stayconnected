@@ -1,4 +1,4 @@
-import ScreenLg from '@/components/page-containers/screen-lg';
+import ScreenLg from '@/components/layout/page-containers/screen-lg';
 import Logo from '../components/logo';
 import Controls from '../components/controls';
 import SearchBlock from '../components/search-block';

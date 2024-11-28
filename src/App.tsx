@@ -1,15 +1,7 @@
-import { ModeToggle } from '@/components/layout/components/header/mode-toggle';
-import { ThemeProvider } from '@/components/theme/theme-provider';
+import MainRoutes from './routes/routes';
 
 const App: React.FC = () => {
-  return (
-    <ThemeProvider>
-      {/* demo of ModeToggle */}
-      <div className='bg-background text-foreground'>
-        <ModeToggle />
-      </div>
-    </ThemeProvider>
-  );
+  return <MainRoutes />;
 };
 
 export default App;

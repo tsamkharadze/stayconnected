@@ -1,4 +1,4 @@
-import ScreenLg from '@/components/page-containers/screen-lg';
+import ScreenLg from '@/components/layout/page-containers/screen-lg';
 
 const Footer: React.FC = () => {
   return (
