@@ -1,4 +1,5 @@
 import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
 
 const Question = () => {
   return (
@@ -18,8 +19,10 @@ const Question = () => {
         repudiandae fugiat iste unde? Natus exercitationem voluptas placeat
         fugiat beatae inventore sunt a quo nisi!
       </div>
-      <div className='mt-4 font-semibold uppercase'>
-        React, TypeScript, Redux
+      <div className='mt-4 space-x-2'>
+        <Badge variant='secondary'>React</Badge>
+        <Badge variant='secondary'>TypeScript</Badge>
+        <Badge variant='secondary'>Redux</Badge>
       </div>
     </div>
   );
