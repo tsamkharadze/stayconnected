@@ -1,3 +1,4 @@
+import FormContainer from '@/components/layout/page-containers/form-container';
 import ScreenMd from '@/components/layout/page-containers/screen-md';
 import { FancyMultiSelect } from '@/components/ui-blocks/fancy-multi-select/fancy-multi-select';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,7 @@ const CreateQuestionPage = () => {
       <div className="my-4">
       <h1 className="text-2xl font-bold">Add Question</h1>
       </div>
-      <form className='flex flex-col gap-8'>
+      <FormContainer>
         <div>
           <Label htmlFor='title'>Title</Label>
           <Input id='title'/>
@@ -24,7 +25,7 @@ const CreateQuestionPage = () => {
           <FancyMultiSelect />
         </div>
         <Button>Add question</Button>
-      </form>
+      </FormContainer>
     </ScreenMd>
   );
 };
