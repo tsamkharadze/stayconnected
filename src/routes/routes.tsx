@@ -26,7 +26,7 @@ const MainRoutes = () => {
           <Route path='register' element={<RegistrationPage />} />
           <Route path='profile' element={<UserProfile />} />
           <Route path='createQuestion' element={<CreateQuestionPage />} />{' '}
-          <Route path='questions' element={<QuestionPage />} />
+          <Route path='question' element={<QuestionPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
