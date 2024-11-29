@@ -1,4 +1,5 @@
 import ScreenMd from '@/components/layout/page-containers/screen-md';
+import { FancyMultiSelect } from '@/components/ui-blocks/fancy-multi-select/fancy-multi-select';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -18,6 +19,9 @@ const CreateQuestionPage = () => {
         <div>
           <Label htmlFor='description'>Description</Label>
           <Textarea id='description' className='' />
+        </div>
+        <div>
+          <FancyMultiSelect />
         </div>
         <Button className="">Add question</Button>
       </form>
