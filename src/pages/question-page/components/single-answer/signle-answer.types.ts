@@ -1,7 +1,7 @@
 export type SingleAnswerProps = {
-  username?: string;
-  date?: string;
-  content?: string;
-  votes?: number;
-  isAccepted?: boolean;
+  username: string;
+  date: string;
+  content: string;
+  votes: number;
+  isAccepted: boolean;
 };
