@@ -14,16 +14,16 @@ const CreateQuestionPage = () => {
       <form className='flex flex-col gap-8'>
         <div>
           <Label htmlFor='title'>Title</Label>
-          <Input id='title' className='' />
+          <Input id='title'/>
         </div>
         <div>
           <Label htmlFor='description'>Description</Label>
-          <Textarea id='description' className='' />
+          <Textarea id='description'/>
         </div>
         <div>
           <FancyMultiSelect />
         </div>
-        <Button className="">Add question</Button>
+        <Button>Add question</Button>
       </form>
     </ScreenMd>
   );
