@@ -17,7 +17,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
       <CardContent className='space-y-2 p-4'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
-            <div className='flex items-center gap-2'>
+            <div className='flex cursor-pointer items-center gap-2'>
               <Avatar>
                 <AvatarImage src='https://github.com/shadcn.png' />
                 <AvatarFallback>CN</AvatarFallback>
