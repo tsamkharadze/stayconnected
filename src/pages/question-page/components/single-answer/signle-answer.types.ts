@@ -3,4 +3,5 @@ export type SingleAnswerProps = {
   date?: string;
   content?: string;
   votes?: number;
+  isAccepted?: boolean;
 };

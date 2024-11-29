@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
-const Question = () => {
+const Question: React.FC = () => {
   return (
     <div>
       <h2 className='text-3xl font-bold'>Question Title</h2>
