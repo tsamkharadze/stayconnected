@@ -4,8 +4,9 @@ const Answers: React.FC = () => {
   return (
     <div className='mt-6'>
       <h2 className='text-xl font-semibold'>Answers</h2>
-      <div>
+      <div className='space-y-4'>
         <SingleAnswer />
+        {/* <SingleAnswer /> */}
       </div>
     </div>
   );

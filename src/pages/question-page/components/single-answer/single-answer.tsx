@@ -11,7 +11,7 @@ const SingleAnswer = ({
   votes = 1,
 }: SingleAnswerProps) => {
   return (
-    <Card className='max-w-2xl border-none bg-background text-foreground'>
+    <Card className='w-full border-none bg-background text-foreground'>
       <CardContent className='space-y-2 p-4'>
         <div className='flex items-center gap-2'>
           <div className='flex items-center gap-2'>
