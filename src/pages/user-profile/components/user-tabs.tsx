@@ -1,8 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-const UserTabs:React.FC = () => {
-    return(
-        <div>
-            <Tabs defaultValue='questions' className='w-[400px]'>
+const UserTabs: React.FC = () => {
+  return (
+    <div>
+      <Tabs defaultValue='questions' className='w-[400px]'>
         <TabsList>
           <TabsTrigger value='questions'>My Questions</TabsTrigger>
           <TabsTrigger value='answers'>My Answers</TabsTrigger>
@@ -12,7 +12,7 @@ const UserTabs:React.FC = () => {
         </TabsContent>
         <TabsContent value='answers'>Change your password here.</TabsContent>
       </Tabs>
-        </div>
-    )
-}
-export default UserTabs
+    </div>
+  );
+};
+export default UserTabs;

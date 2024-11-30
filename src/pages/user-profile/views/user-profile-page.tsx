@@ -12,8 +12,10 @@ const user = {
 const UserProfile = () => {
   return (
     <ScreenMd>
+      <div className="flex flex-col gap-8">
       <UserInfo user={user} />
       <UserTabs />
+      </div>
     </ScreenMd>
   );
 };
