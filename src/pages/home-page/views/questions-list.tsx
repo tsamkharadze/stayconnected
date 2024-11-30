@@ -11,7 +11,7 @@ const QuestionsList = () => {
           return (
             <Card className='space-y-2 px-6 py-4' key={array}>
               <div className='flex flex-row justify-between'>
-                <h2 className='text-2xl font-bold'>
+                <h2 className='cursor-pointer text-2xl font-bold hover:underline'>
                   Question Title {index + 1}
                 </h2>
                 <span className='text-sm text-muted-foreground'>Author</span>
