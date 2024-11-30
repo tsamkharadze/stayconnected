@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Toggle } from '@/components/ui/toggle';
 import { Check, ThumbsUp } from 'lucide-react';
@@ -19,8 +20,22 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
   onAcceptAnswer,
 }) => {
   const { toast } = useToast();
+
+  // LOCAL STATE
   const loggedUserId = '82wewq7dsaghsa';
   const isAuthorLoggedIn = loggedUserId === authorId;
+
+  const [isLiked, setIsLiked] = useState(false);
+  const [currentVotes, setCurrentVotes] = useState(votes);
+
+  const handleLikeToggle = () => {
+    if (isLiked) {
+      setCurrentVotes((prevVotes) => prevVotes - 1);
+    } else {
+      setCurrentVotes((prevVotes) => prevVotes + 1);
+    }
+    setIsLiked((prev) => !prev);
+  };
 
   let acceptedBadge = null;
   if (isAccepted) {
@@ -81,9 +96,10 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
             variant='outline'
             size='sm'
             className='data-[state=on]:bg-primary data-[state=on]:text-primary-foreground'
+            onClick={handleLikeToggle}
           >
             <ThumbsUp className='mr-1 h-4 w-4 transition-all hover:text-primary' />
-            <span className='text-sm'>{votes}</span>
+            <span className='text-sm'>{currentVotes}</span>{' '}
           </Toggle>
         </div>
       </CardContent>
