@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Toggle } from '@/components/ui/toggle';
-import { Check, ThumbsUp } from 'lucide-react';
+import { Check, ThumbsUp, Highlighter } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { SingleAnswerProps } from '@/pages/question-page/components/answers/single-answer/signle-answer.types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { ToastAction } from '@/components/ui/toast';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const SingleAnswer: React.FC<SingleAnswerProps> = ({
   answerId,
@@ -40,34 +46,54 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
   let acceptedBadge = null;
   if (isAccepted) {
     acceptedBadge = (
-      <Badge
-        variant='outline'
-        className='cursor-pointer border-green-300 bg-green-100 text-green-800'
-        onClick={() => onAcceptAnswer(answerId)}
-      >
-        <Check className='mr-1 h-4 w-4' /> Accepted
-      </Badge>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Badge
+              variant='outline'
+              className='cursor-pointer border-green-300 bg-green-100 text-green-800'
+              onClick={() => onAcceptAnswer(answerId)}
+            >
+              <Check className='mr-1 h-4 w-4' /> Accepted
+            </Badge>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Accepted</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   }
-
   let acceptButton = null;
   if (isAuthorLoggedIn && !isAccepted) {
     acceptButton = (
-      <Button
-        variant='outline'
-        onClick={() => {
-          onAcceptAnswer(answerId);
-          toast({
-            description: 'This answer is marked as accepted',
-            duration: 2500,
-            action: (
-              <ToastAction altText='Undo marking as accepted'>Undo</ToastAction>
-            ),
-          });
-        }}
-      >
-        Mark this answer as accepted
-      </Button>
+      <TooltipProvider delayDuration={100}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant='ghost'
+              className='text-primary/90'
+              onClick={() => {
+                onAcceptAnswer(answerId);
+                toast({
+                  description: 'This answer is marked as accepted',
+                  duration: 2500,
+                  action: (
+                    <ToastAction altText='Undo marking as accepted'>
+                      Undo
+                    </ToastAction>
+                  ),
+                });
+              }}
+            >
+              <Highlighter />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent className='bg-green-50 text-secondary-foreground'>
+            <p>Mark this answer as accepted</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   }
 
