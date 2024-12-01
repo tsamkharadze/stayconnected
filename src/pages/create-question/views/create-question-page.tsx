@@ -5,24 +5,39 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { userAtom } from '@/store/auth';
 import { useMutation } from '@tanstack/react-query';
- 
+import { useAtomValue } from 'jotai';
 import { useForm } from 'react-hook-form';
- 
+import { httpClient } from '@/components/api';
 type FormFields = {
   title: string;
   description: string;
-  tags: Framework[];
+  tags: tag[];
 };
+type tag = {
+  name: string;
+}
 type Framework = {
   value: string;
   label: string;
 };
-const sendQuestion = (data: FormFields) => {
-  return Promise.resolve(data);
+const sendQuestion = async (data: FormFields) => {
+  // return Promise.resolve(data);
+  // const newData = {
+  //   ...data,
+  //   access: token
+  // }
+  console.log("data", data)
+  const response = await httpClient.post("/questions", data)
+  return response
 };
  
 const CreateQuestionPage = () => {
+  const user = useAtomValue(userAtom)
+  const token = user?.accessToken
+  user ? console.log("userAcc", token) : console.log("no user")
+  
   const { mutate: handleSendForm } = useMutation({
     mutationFn: sendQuestion,
     onSuccess: (data) => {
@@ -54,9 +69,13 @@ const CreateQuestionPage = () => {
   });
  
   const handleTagsChange = (tags: Framework[]) => {
-    setValue('tags', tags); 
+    console.log("Selected tags", tags)
+    const formattedTags = tags.map((tag) =>( {name: tag.value}))
+    console.log("formated", formattedTags)
+    setValue('tags', formattedTags); 
+
   };
- 
+
   return (
     <ScreenMd>
       <div className='my-4'>
