@@ -5,8 +5,8 @@ export type AnswersProps = {
     rating: number;
     date: string;
     content: string;
-    votes: number;
+    likes: number;
+    isCorrect: boolean;
   }[];
   authorId: string;
-  acceptedAnswerId: string;
 };
