@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { colors } from '../static/colors';
+// import { colors } from '../static/colors';
 
 const UserRating = () => {
   const authors = [
@@ -53,14 +53,12 @@ const UserRating = () => {
   return (
     <>
       <Card className='px-6 py-4 md:p-4'>
-        <h2 className='text-center text-2xl font-bold md:text-lg lg:text-2xl'>
-          Rating
+        <h2 className='mb-4 text-2xl font-bold md:text-lg lg:text-2xl'>
+          Leaderboard
         </h2>
         <div className='mt-2 space-y-6 md:space-y-4 lg:space-y-6'>
           {authors.map((author, i) => {
-            const color = colors[Math.floor(Math.random() * colors.length)];
-
-            const bgColor = `bg-${color}-200`;
+            //const color = colors[Math.floor(Math.random() * colors.length)];
 
             return (
               <div
@@ -70,7 +68,7 @@ const UserRating = () => {
                 <div>
                   <Avatar className='border'>
                     <AvatarImage src={author.avatar} alt={author.name} />
-                    <AvatarFallback className={bgColor}>
+                    <AvatarFallback className='bg-violet-200 font-semibold'>
                       {getInitials(author.name)}
                     </AvatarFallback>
                   </Avatar>
