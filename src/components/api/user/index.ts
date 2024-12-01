@@ -29,3 +29,14 @@ export const LoginUser = async (userData: {
     throw error;
   }
 };
+
+export const getQuestions = async () => {
+  try {
+    const response = await httpClient.get('/questions');
+    console.log('login successful:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error during login:', error);
+    throw error;
+  }
+};
