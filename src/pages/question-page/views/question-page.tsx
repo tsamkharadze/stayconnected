@@ -13,7 +13,6 @@ const questionWithAnswers = {
     content:
       'I am trying to understand how to use TypeScript in a React project. Can anyone provide examples or resources?',
     tags: ['React', 'TypeScript'],
-    acceptedAnswerId: 'answer2',
   },
   answers: [
     {
@@ -22,7 +21,8 @@ const questionWithAnswers = {
       rating: 15,
       date: '10 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
-      votes: 2,
+      likes: 2,
+      isCorrect: false,
     },
     {
       id: 'answer2',
@@ -30,7 +30,8 @@ const questionWithAnswers = {
       rating: 30,
       date: '20 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
-      votes: 1,
+      likes: 1,
+      isCorrect: false,
     },
     {
       id: 'answer3',
@@ -38,7 +39,8 @@ const questionWithAnswers = {
       username: 'nidshasba',
       date: '10 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
-      votes: 10,
+      likes: 10,
+      isCorrect: false,
     },
   ],
 };
@@ -47,18 +49,14 @@ const QuestionPage: React.FC = () => {
   const {
     question,
     answers,
-    question: { authorId, acceptedAnswerId },
+    question: { authorId },
   } = questionWithAnswers;
 
   return (
     <div className='mb-8 mt-2 flex flex-col items-center'>
       <div className='w-5/6 space-y-10 text-foreground md:w-2/3'>
         <Question question={question} />
-        <Answers
-          answers={answers}
-          acceptedAnswerId={acceptedAnswerId}
-          authorId={authorId}
-        />
+        <Answers answers={answers} authorId={authorId} />
         <WriteAnswer />
       </div>
     </div>

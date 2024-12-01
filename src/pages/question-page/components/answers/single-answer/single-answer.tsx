@@ -3,7 +3,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Toggle } from '@/components/ui/toggle';
 import { Check, ThumbsUp, Highlighter, Dot, Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { SingleAnswerProps } from '@/pages/question-page/components/answers/single-answer/signle-answer.types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -14,16 +13,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { SingleAnswerProps } from '@/pages/question-page/components/answers/single-answer/signle-answer.types';
 
 const SingleAnswer: React.FC<SingleAnswerProps> = ({
-  answerId,
   username,
   date,
   content,
-  votes,
+  likes,
   authorId,
-  isAccepted,
-  onAcceptAnswer,
+  isCorrect,
   rating,
 }) => {
   const { toast } = useToast();
@@ -33,13 +31,25 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
   const isAuthorLoggedIn = loggedUserId === authorId;
 
   const [isLiked, setIsLiked] = useState(false);
-  const [currentVotes, setCurrentVotes] = useState(votes);
+  const [currentLikes, setCurrentLikes] = useState(likes);
+  const [isAccepted, setIsAccepted] = useState(isCorrect);
+
+  const onAcceptAnswer = () => {
+    setIsAccepted(true);
+    toast({
+      description: 'This answer is marked as accepted',
+      duration: 2500,
+      action: (
+        <ToastAction altText='Undo marking as accepted'>Undo</ToastAction>
+      ),
+    });
+  };
 
   const handleLikeToggle = () => {
     if (isLiked) {
-      setCurrentVotes((prevVotes) => prevVotes - 1);
+      setCurrentLikes((prevLikes) => prevLikes - 1);
     } else {
-      setCurrentVotes((prevVotes) => prevVotes + 1);
+      setCurrentLikes((prevLikes) => prevLikes + 1);
     }
     setIsLiked((prev) => !prev);
   };
@@ -53,7 +63,6 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
             <Badge
               variant='outline'
               className='cursor-pointer border-green-300 bg-green-100 text-green-800'
-              onClick={() => onAcceptAnswer(answerId)}
             >
               <Check className='mr-1 h-4 w-4' /> Accepted
             </Badge>
@@ -65,6 +74,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
       </TooltipProvider>
     );
   }
+
   let acceptButton = null;
   if (isAuthorLoggedIn && !isAccepted) {
     acceptButton = (
@@ -74,18 +84,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
             <Button
               variant='ghost'
               className='text-primary'
-              onClick={() => {
-                onAcceptAnswer(answerId);
-                toast({
-                  description: 'This answer is marked as accepted',
-                  duration: 2500,
-                  action: (
-                    <ToastAction altText='Undo marking as accepted'>
-                      Undo
-                    </ToastAction>
-                  ),
-                });
-              }}
+              onClick={() => onAcceptAnswer()}
             >
               <Highlighter />
             </Button>
@@ -133,7 +132,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
             onClick={handleLikeToggle}
           >
             <ThumbsUp className='mr-1 h-4 w-4 transition-all hover:text-primary' />
-            <span className='text-sm'>{currentVotes}</span>{' '}
+            <span className='text-sm'>{currentLikes}</span>
           </Toggle>
         </div>
       </CardContent>

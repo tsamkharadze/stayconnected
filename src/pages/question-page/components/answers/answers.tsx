@@ -1,23 +1,7 @@
 import { AnswersProps } from '@/pages/question-page/components/answers/answers.types';
 import SingleAnswer from '@/pages/question-page/components/answers/single-answer/single-answer';
-import { useState } from 'react';
 
-const Answers: React.FC<AnswersProps> = ({
-  answers,
-  acceptedAnswerId,
-  authorId,
-}) => {
-  const [currentAcceptedAnswerId, setCurrentAcceptedAnswerId] =
-    useState(acceptedAnswerId);
-
-  const handleAcceptAnswer = (answerId: string) => {
-    if (currentAcceptedAnswerId === answerId) {
-      setCurrentAcceptedAnswerId('');
-    } else {
-      setCurrentAcceptedAnswerId(answerId);
-    }
-  };
-
+const Answers: React.FC<AnswersProps> = ({ answers, authorId }) => {
   return (
     <div className='mt-6 space-y-6'>
       <h2 className='text-xl font-semibold'>Answers</h2>
@@ -28,12 +12,10 @@ const Answers: React.FC<AnswersProps> = ({
             username={answer.username}
             date={answer.date}
             content={answer.content}
-            votes={answer.votes}
+            likes={answer.likes}
             rating={answer.rating}
-            isAccepted={answer.id === currentAcceptedAnswerId}
+            isCorrect={answer.isCorrect}
             authorId={authorId}
-            onAcceptAnswer={handleAcceptAnswer}
-            answerId={answer.id}
           />
         ))}
       </div>
