@@ -1,6 +1,6 @@
-import ScreenMd from '@/components/layout/page-containers/screen-md';
 import UserInfo from '../components/user-info';
 import UserTabs from '../components/user-tabs';
+import ScreenLg from '@/components/layout/page-containers/screen-lg';
 
 
 const user = {
@@ -42,12 +42,12 @@ const user = {
 };
 const UserProfile = () => {
   return (
-    <ScreenMd>
+    <ScreenLg>
       <div className="flex flex-col gap-8">
       <UserInfo user={user} />
       <UserTabs user={user}/>
       </div>
-    </ScreenMd>
+    </ScreenLg>
   );
 };
 
