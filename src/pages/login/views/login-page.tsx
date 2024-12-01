@@ -116,6 +116,9 @@ const LoginPage = () => {
                     Sign In
                   </Button>
                 </div>
+                <div className='w-full text-center font-semibold md:hidden'>
+                  OR
+                </div>
                 <div>
                   <Link to='/register' className='w-full'>
                     <Button
@@ -124,7 +127,7 @@ const LoginPage = () => {
                       size='lg'
                       variant='secondary'
                     >
-                      Register
+                      Sign Up
                     </Button>
                   </Link>
                 </div>

@@ -170,6 +170,14 @@ const RegistrationPage = () => {
               </div>
               <div className='grid gap-4 md:grid-cols-2'>
                 <div>
+                  <Button className='w-full' type='submit' size='lg'>
+                    Sign Up
+                  </Button>
+                </div>
+                <div className='w-full text-center font-semibold md:hidden'>
+                  OR
+                </div>
+                <div>
                   <Link to='/login' className='w-full'>
                     <Button
                       className='w-full'
@@ -180,11 +188,6 @@ const RegistrationPage = () => {
                       Sign In
                     </Button>
                   </Link>
-                </div>
-                <div>
-                  <Button className='w-full' type='submit' size='lg'>
-                    Register
-                  </Button>
                 </div>
               </div>
             </FormContainer>
