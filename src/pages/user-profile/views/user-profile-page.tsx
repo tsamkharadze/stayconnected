@@ -11,7 +11,7 @@ const user = {
   questions: [{
     id: "q1",
     author: "John Doe",
-    title: "I would like to refer to a previously computed target as an argument to a hook function called by tarchetypes::tar_hook_outer(). ",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore.",
     description: `I expect successful completion of this simple pipeline and that target A would have the value "A--postprocessed". How can I successfully refer to the Suffix target as an argument to postprocess()? Note that this pattern worked in the August 2024 timeframe. I see that tarchetypes::tar_hook_outer_raw() was introduced in tarchetypes 0.10.0 (2024-09-26) which may have broken the previous behavior. Any help will be much appreciated!`,
     tags: ["React", "Technology"],
     date: "25 Mar 2024",

@@ -9,7 +9,8 @@ import { userAtom } from '@/store/auth';
 import { useMutation } from '@tanstack/react-query';
 import { useAtomValue } from 'jotai';
 import { useForm } from 'react-hook-form';
-import { httpClient } from '@/components/api';
+
+import { sendQuestion } from './send-question';
 type FormFields = {
   title: string;
   description: string;
@@ -22,21 +23,9 @@ type Framework = {
   value: string;
   label: string;
 };
-const sendQuestion = async (data: FormFields) => {
-  // return Promise.resolve(data);
-  // const newData = {
-  //   ...data,
-  //   access: token
-  // }
-  console.log("data", data)
-  const response = await httpClient.post("/questions", data)
-  return response
-};
+
  
 const CreateQuestionPage = () => {
-  const user = useAtomValue(userAtom)
-  const token = user?.accessToken
-  user ? console.log("userAcc", token) : console.log("no user")
   
   const { mutate: handleSendForm } = useMutation({
     mutationFn: sendQuestion,
@@ -63,6 +52,10 @@ const CreateQuestionPage = () => {
  
   const title = register('title', {
     required: 'Title should not be empty',
+    maxLength: {
+      value: 100, 
+      message: 'Title should not exceed 100 characters',
+    },
   });
   const description = register('description', {
     required: 'Description should not be empty',
