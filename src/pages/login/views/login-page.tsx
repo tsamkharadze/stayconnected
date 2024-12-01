@@ -4,11 +4,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useForm, Controller } from 'react-hook-form';
 import { loginType } from '../types/login.types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ScreenMd from '@/components/layout/page-containers/screen-md';
 import FormContainer from '@/components/layout/page-containers/form-container';
+import { useMutation } from '@tanstack/react-query';
+import { LoginUser } from '@/components/api/user';
+import { useAtomValue } from 'jotai';
+import { userAtom } from '@/store/auth';
 
 const LoginPage = () => {
+  const user = useAtomValue(userAtom);
+  console.log(user);
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -17,8 +24,19 @@ const LoginPage = () => {
     defaultValues: { email: '', password: '' },
   });
 
+  const { mutate: login } = useMutation({
+    mutationKey: ['login'],
+    mutationFn: LoginUser,
+    onSuccess: (data) => {
+      if (data) {
+        localStorage.setItem('data', JSON.stringify(data));
+        navigate('/home');
+      }
+    },
+  });
+
   const onSubmit = (fieldValues: loginType) => {
-    console.log(fieldValues);
+    login(fieldValues);
   };
   return (
     <>

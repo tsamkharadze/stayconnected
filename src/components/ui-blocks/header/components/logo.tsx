@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
+
 const Logo: React.FC = () => {
   return (
     <div>
-      <h1 className='text-onSurface text-sm font-bold md:text-2xl'>
+      <Link to="/">
+      <h1 className='text-onSurface text-xl font-bold'>
         Stay connected
       </h1>
+      </Link>
     </div>
   );
 };
