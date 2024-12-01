@@ -7,6 +7,8 @@ import { RegistrationType } from '../types/registration.types';
 import { Link } from 'react-router-dom';
 import ScreenMd from '@/components/layout/page-containers/screen-md';
 import FormContainer from '@/components/layout/page-containers/form-container';
+import { useMutation } from '@tanstack/react-query';
+import { registerUser } from '@/components/api/user';
 
 const RegistrationPage = () => {
   const {
@@ -16,7 +18,7 @@ const RegistrationPage = () => {
     watch,
   } = useForm<RegistrationType>({
     defaultValues: {
-      full_name: '',
+      fullname: '',
       email: '',
       password: '',
       confirm_password: '',
@@ -24,8 +26,15 @@ const RegistrationPage = () => {
 
     mode: 'onChange',
   });
+  const { mutate: register } = useMutation({
+    mutationKey: ['register'],
+    mutationFn: registerUser,
+  });
+
   const onSubmit = (fieldValues: RegistrationType) => {
-    console.log(fieldValues);
+    console.log('clicked');
+
+    register(fieldValues);
   };
   return (
     <>
@@ -39,7 +48,7 @@ const RegistrationPage = () => {
               <div>
                 <Label htmlFor='full_name'>Full Name</Label>
                 <Controller
-                  name='full_name'
+                  name='fullname'
                   control={control}
                   rules={{
                     required: true,
@@ -59,9 +68,9 @@ const RegistrationPage = () => {
                     );
                   }}
                 />
-                {errors.full_name && (
+                {errors.fullname && (
                   <span role='alert' className='pt-2 text-sm text-destructive'>
-                    {String(errors.full_name.message)}
+                    {String(errors.fullname.message)}
                   </span>
                 )}
               </div>

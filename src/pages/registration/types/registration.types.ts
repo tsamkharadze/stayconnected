@@ -1,5 +1,5 @@
 export type RegistrationType = {
-  full_name: string;
+  fullname: string;
   email: string;
   password: string;
   confirm_password: string;
