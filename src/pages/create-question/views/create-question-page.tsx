@@ -5,9 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { userAtom } from '@/store/auth';
 import { useMutation } from '@tanstack/react-query';
-import { useAtomValue } from 'jotai';
 import { useForm } from 'react-hook-form';
 
 import { sendQuestion } from './send-question';
@@ -32,8 +30,8 @@ const CreateQuestionPage = () => {
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
     },
-    onError: (error) => {
-      console.error('Error submitting question', error);
+    onError: (error: Error) => {
+      console.error('Error submitting question', error.message);
     },
   });
  
