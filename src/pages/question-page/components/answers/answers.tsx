@@ -29,6 +29,7 @@ const Answers: React.FC<AnswersProps> = ({
             date={answer.date}
             content={answer.content}
             votes={answer.votes}
+            rating={answer.rating}
             isAccepted={answer.id === currentAcceptedAnswerId}
             authorId={authorId}
             onAcceptAnswer={handleAcceptAnswer}

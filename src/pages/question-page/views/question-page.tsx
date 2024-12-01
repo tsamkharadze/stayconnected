@@ -8,6 +8,7 @@ const questionWithAnswers = {
     authorId: '82wewq7dsaghsa',
     title: 'How to use TypeScript with React?',
     author: 'Jane Doe',
+    rating: 20,
     date: '24 Nov 2023',
     content:
       'I am trying to understand how to use TypeScript in a React project. Can anyone provide examples or resources?',
@@ -18,6 +19,7 @@ const questionWithAnswers = {
     {
       id: 'answer1',
       username: 'nika123',
+      rating: 15,
       date: '10 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
       votes: 2,
@@ -25,12 +27,14 @@ const questionWithAnswers = {
     {
       id: 'answer2',
       username: 'diko123',
+      rating: 30,
       date: '20 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
       votes: 1,
     },
     {
       id: 'answer3',
+      rating: 0,
       username: 'nidshasba',
       date: '10 Nov 2024',
       content: 'h abjhsdas sda sdadiuasdai',
