@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <div className='border-border-soft border-b'>
       <ScreenLgHeader>
-        <div className='grid grid-cols-2 grid-rows-[auto_auto] items-center md:gap-16 lg:gap-32 xl:gap-64 py-4 md:grid-cols-[auto_1fr_auto] md:grid-rows-1 gap-y-8'>
+        <div className='grid grid-cols-2 grid-rows-[auto_auto] items-center gap-y-8 py-4 md:grid-cols-[auto_1fr_auto] md:grid-rows-1 md:gap-16 lg:gap-32 xl:gap-64'>
           <div className='col-span-1 md:col-start-1'>
             <Logo />
           </div>

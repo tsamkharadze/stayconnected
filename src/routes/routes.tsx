@@ -1,4 +1,6 @@
 import DefaultLayout from '@/components/layout/default/default-layout';
+import { AuthGuard } from '@/components/route-guards/auth';
+import { LogoutGuard } from '@/components/route-guards/logout';
 import Loading from '@/components/ui/loading';
 import CreateQuestionPage from '@/pages/create-question/views/create-question-page';
 import HomePage from '@/pages/home-page/views/home-page';
@@ -24,11 +26,46 @@ const MainRoutes = () => {
             }
           />
           <Route path='home' element={<HomePage />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegistrationPage />} />
-          <Route path='profile' element={<UserProfile />} />
-          <Route path='createQuestion' element={<CreateQuestionPage />} />
-          <Route path='question' element={<QuestionPage />} />
+          <Route
+            path='login'
+            element={
+              <AuthGuard>
+                <LoginPage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path='register'
+            element={
+              <AuthGuard>
+                <RegistrationPage />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path='profile'
+            element={
+              <LogoutGuard>
+                <UserProfile />
+              </LogoutGuard>
+            }
+          />
+          <Route
+            path='createQuestion'
+            element={
+              <LogoutGuard>
+                <CreateQuestionPage />
+              </LogoutGuard>
+            }
+          />
+          <Route
+            path='question'
+            element={
+              <LogoutGuard>
+                <QuestionPage />
+              </LogoutGuard>
+            }
+          />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

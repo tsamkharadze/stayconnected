@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +9,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { LogOut, Settings, User } from 'lucide-react';
+import { LogOut, User } from 'lucide-react';
+import { useAtom } from 'jotai';
+import { userAtom } from '@/store/auth';
 const Controls: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useAtom(userAtom);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('data');
+    navigate('/home');
+  };
+
   return (
     <div>
-      {loggedIn ? (
+      {user ? (
         <div className='flex items-center gap-4'>
           <Link to='createQuestion'>
             <Button variant='default'>Add</Button>
@@ -31,16 +40,12 @@ const Controls: React.FC = () => {
             <DropdownMenuContent className='w-56' align='end' forceMount>
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <Settings className='mr-2 h-4 w-4' />
-                  <span>User settings</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
                   <User className='mr-2 h-4 w-4' />
                   <span>Profile</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className='text-red-600'>
+              <DropdownMenuItem className='text-red-600' onClick={handleLogout}>
                 <LogOut className='mr-2 h-4 w-4' />
                 <span>Sign out</span>
               </DropdownMenuItem>
@@ -49,13 +54,7 @@ const Controls: React.FC = () => {
         </div>
       ) : (
         <div>
-          <Button
-            onClick={() => {
-              setLoggedIn(true);
-            }}
-          >
-            Sign In
-          </Button>
+          <Button onClick={() => navigate('/login')}>Sign In</Button>
         </div>
       )}
     </div>

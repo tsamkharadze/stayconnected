@@ -9,12 +9,12 @@ import ScreenMd from '@/components/layout/page-containers/screen-md';
 import FormContainer from '@/components/layout/page-containers/form-container';
 import { useMutation } from '@tanstack/react-query';
 import { LoginUser } from '@/components/api/user';
-import { useAtomValue } from 'jotai';
+import { useSetAtom } from 'jotai';
+
 import { userAtom } from '@/store/auth';
 
 const LoginPage = () => {
-  const user = useAtomValue(userAtom);
-  console.log(user);
+  const setuser = useSetAtom(userAtom);
   const navigate = useNavigate();
   const {
     control,
@@ -29,7 +29,7 @@ const LoginPage = () => {
     mutationFn: LoginUser,
     onSuccess: (data) => {
       if (data) {
-        localStorage.setItem('data', JSON.stringify(data));
+        setuser(data);
         navigate('/home');
       }
     },
