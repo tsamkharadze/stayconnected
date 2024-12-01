@@ -54,7 +54,7 @@ const CreateQuestionPage = () => {
   });
  
   const handleTagsChange = (tags: Framework[]) => {
-    setValue('tags', tags); // Update the tags field in the form
+    setValue('tags', tags); 
   };
  
   return (
@@ -71,17 +71,17 @@ const CreateQuestionPage = () => {
         <div>
           <Label htmlFor='title'>Title</Label>
           <Input {...title} id='title' />
-          <p className='text-red-500'>{errors.title?.message}</p>
+          <p className='text-red-500 my-2'>{errors.title?.message}</p>
         </div>
         <div>
           <Label htmlFor='description'>Description</Label>
           <Textarea {...description} id='description' />
-          <p className='text-red-500'>{errors.description?.message}</p>
+          <p className='text-red-500 my-2'>{errors.description?.message}</p>
         </div>
         <div>
           <Label htmlFor='tags'>Tags</Label>
           <FancyMultiSelect onTagsChange={handleTagsChange} />
-          <p className='text-red-500'>{errors.tags?.message}</p>
+          <p className='text-red-500 my-2'>{errors.tags?.message}</p>
         </div>
         <Button>Add question</Button>
       </FormContainer>
