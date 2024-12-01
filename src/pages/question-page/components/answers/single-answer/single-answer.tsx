@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Toggle } from '@/components/ui/toggle';
-import { Check, ThumbsUp, Highlighter } from 'lucide-react';
+import { Check, ThumbsUp, Highlighter, Dot, Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { SingleAnswerProps } from '@/pages/question-page/components/answers/single-answer/signle-answer.types';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +24,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
   authorId,
   isAccepted,
   onAcceptAnswer,
+  rating,
 }) => {
   const { toast } = useToast();
 
@@ -72,7 +73,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
           <TooltipTrigger asChild>
             <Button
               variant='ghost'
-              className='text-primary/90'
+              className='text-primary'
               onClick={() => {
                 onAcceptAnswer(answerId);
                 toast({
@@ -101,7 +102,7 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
     <Card className='w-full border-none bg-background text-foreground'>
       <CardContent className='space-y-2 p-4'>
         <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-1'>
             <div className='flex cursor-pointer items-center gap-2'>
               <Avatar>
                 <AvatarImage src='https://github.com/shadcn.png' />
@@ -109,7 +110,14 @@ const SingleAnswer: React.FC<SingleAnswerProps> = ({
               </Avatar>
               <span className='font-medium'>{username}</span>
             </div>
-            <span className='text-sm'>• {date}</span>
+            <span className='flex items-center gap-0.5 text-sm text-primary'>
+              <Dot className='text-accent-foreground' />
+              <Star className='size-4' />
+              {rating}
+            </span>
+            <span className='flex items-center text-sm'>
+              <Dot className='text-accent-foreground' /> {date}
+            </span>
           </div>
           {acceptedBadge}
           {acceptButton}

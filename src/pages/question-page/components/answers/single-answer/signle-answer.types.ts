@@ -3,6 +3,7 @@ export type SingleAnswerProps = {
   username: string;
   date: string;
   content: string;
+  rating: number;
   votes: number;
   authorId: string;
   isAccepted: boolean;
