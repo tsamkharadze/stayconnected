@@ -6,30 +6,32 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useMutation } from '@tanstack/react-query';
- 
 import { useForm } from 'react-hook-form';
- 
+
+import { sendQuestion } from './send-question';
 type FormFields = {
   title: string;
   description: string;
-  tags: Framework[];
+  tags: tag[];
 };
+type tag = {
+  name: string;
+}
 type Framework = {
   value: string;
   label: string;
 };
-const sendQuestion = (data: FormFields) => {
-  return Promise.resolve(data);
-};
+
  
 const CreateQuestionPage = () => {
+  
   const { mutate: handleSendForm } = useMutation({
     mutationFn: sendQuestion,
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
     },
-    onError: (error) => {
-      console.error('Error submitting question', error);
+    onError: (error: Error) => {
+      console.error('Error submitting question', error.message);
     },
   });
  
@@ -48,15 +50,23 @@ const CreateQuestionPage = () => {
  
   const title = register('title', {
     required: 'Title should not be empty',
+    maxLength: {
+      value: 100, 
+      message: 'Title should not exceed 100 characters',
+    },
   });
   const description = register('description', {
     required: 'Description should not be empty',
   });
  
   const handleTagsChange = (tags: Framework[]) => {
-    setValue('tags', tags); 
+    console.log("Selected tags", tags)
+    const formattedTags = tags.map((tag) =>( {name: tag.value}))
+    console.log("formated", formattedTags)
+    setValue('tags', formattedTags); 
+
   };
- 
+
   return (
     <ScreenMd>
       <div className='my-4'>
