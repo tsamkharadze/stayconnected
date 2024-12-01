@@ -1,4 +1,5 @@
 import DefaultLayout from '@/components/layout/default/default-layout';
+import Loading from '@/components/ui/loading';
 import CreateQuestionPage from '@/pages/create-question/views/create-question-page';
 import HomePage from '@/pages/home-page/views/home-page';
 import LoginPage from '@/pages/login/views/login-page';
@@ -17,7 +18,7 @@ const MainRoutes = () => {
           <Route
             path='/'
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loading />}>
                 <HomePage />
               </Suspense>
             }
@@ -26,7 +27,7 @@ const MainRoutes = () => {
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<RegistrationPage />} />
           <Route path='profile' element={<UserProfile />} />
-          <Route path='createQuestion' element={<CreateQuestionPage />} />{' '}
+          <Route path='createQuestion' element={<CreateQuestionPage />} />
           <Route path='question' element={<QuestionPage />} />
           <Route path='*' element={<NotFound />} />
         </Route>
