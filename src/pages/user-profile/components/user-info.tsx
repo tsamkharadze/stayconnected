@@ -11,15 +11,9 @@ interface UserInfoProps {
   user: User;
 }
 const UserInfo: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
-  // const getUserInfo = async () => {
-  //   try {
-  //     const response = await httpClient.get('');
-  //     console.log('fetched user data', response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
+
+
+
   return (
     <Card>
       <CardHeader className='flex flex-row items-center gap-4'>
