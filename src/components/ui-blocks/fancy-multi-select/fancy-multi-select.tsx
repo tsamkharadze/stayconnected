@@ -1,8 +1,8 @@
 'use client';
- 
+
 import * as React from 'react';
 import { X } from 'lucide-react';
- 
+
 import { Badge } from '@/components/ui/badge';
 import {
   Command,
@@ -11,9 +11,9 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Command as CommandPrimitive } from 'cmdk';
- 
+
 type Framework = Record<'value' | 'label', string>;
- 
+
 const FRAMEWORKS = [
   {
     value: 'next.js',
@@ -48,17 +48,17 @@ const FRAMEWORKS = [
     label: 'Nest.js',
   },
 ] satisfies Framework[];
- 
+
 type FancyMultiSelectProps = {
   onTagsChange: (tags: Framework[]) => void;
 };
- 
+
 export function FancyMultiSelect({ onTagsChange }: FancyMultiSelectProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState<Framework[]>([]);
   const [inputValue, setInputValue] = React.useState('');
- 
+
   const handleUnselect = React.useCallback(
     (framework: Framework) => {
       setSelected((prev) => {
@@ -69,7 +69,7 @@ export function FancyMultiSelect({ onTagsChange }: FancyMultiSelectProps) {
     },
     [onTagsChange],
   );
- 
+
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       const input = inputRef.current;
@@ -91,11 +91,11 @@ export function FancyMultiSelect({ onTagsChange }: FancyMultiSelectProps) {
     },
     [onTagsChange],
   );
- 
+
   const selectables = FRAMEWORKS.filter(
     (framework) => !selected.includes(framework),
   );
- 
+
   return (
     <Command
       onKeyDown={handleKeyDown}
