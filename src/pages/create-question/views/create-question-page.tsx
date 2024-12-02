@@ -30,7 +30,7 @@ const CreateQuestionPage = () => {
     mutationFn: (data: any) => sendQuestion(data, user),
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
-      navigate("/")
+      navigate('/');
     },
     onError: (error: Error) => {
       console.error('Error submitting question', error.message);
