@@ -43,11 +43,11 @@ const UserProfile = () => {
           </>
         ) : (
           <>
-            <div>Please sign in to continue</div>
+            <p className="text-2xl">Please sign in to continue</p>
             <Button onClick={() => navigate('/login')}>Sign in</Button>
           </>
         )}
-        <p>{JSON.stringify(profile)}ss</p>
+        <p>{JSON.stringify(profile)}</p>
       </div>
     </ScreenLg>
   );
