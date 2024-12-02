@@ -33,7 +33,7 @@ const UserProfile = () => {
       <div className='flex flex-col gap-8'>
         {/* <UserInfo user={profile} />
         <UserTabs user={profile} /> */}
-        <p>{JSON.stringify(profile)}</p>
+        <p>{JSON.stringify(profile)}ss</p>
       </div>
     </ScreenLg>
   );
