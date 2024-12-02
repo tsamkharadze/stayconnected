@@ -36,20 +36,17 @@ const UserProfile = () => {
   return (
     <ScreenLg>
       <div className='flex flex-col gap-8'>
-        {profile ? 
-         (
-            <>
+        {profile ? (
+          <>
             <UserInfo user={profile} />
             <UserTabs user={profile} />
-            </>
-          ):(
-            <>
+          </>
+        ) : (
+          <>
             <div>Please sign in to continue</div>
             <Button onClick={() => navigate('/login')}>Sign in</Button>
-            </>
-          )
-          
-        }
+          </>
+        )}
         <p>{JSON.stringify(profile)}ss</p>
       </div>
     </ScreenLg>

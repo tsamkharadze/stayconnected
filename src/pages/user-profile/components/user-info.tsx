@@ -27,7 +27,7 @@ const UserInfo: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
             </p>
           </CardTitle>
           <CardDescription className='text-md'>
-           <p>Rating: {user.rating}</p> 
+            <p>Rating: {user.rating}</p>
           </CardDescription>
         </div>
       </CardHeader>

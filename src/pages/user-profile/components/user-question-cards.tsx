@@ -1,7 +1,5 @@
-
 import { User } from './user';
 import { PropsWithChildren } from 'react';
-
 
 interface UserInfoProps {
   user: User;
@@ -11,9 +9,7 @@ const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
 }) => {
   return (
     <div className='flex flex-col gap-6'>
-       <p>Questions: {user.questions.length}</p>
-
-
+      <p>Questions: {user.questions.length}</p>
 
       {/* {user.questions.map((question) => {
         return (
