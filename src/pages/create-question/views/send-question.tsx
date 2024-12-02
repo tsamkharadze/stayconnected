@@ -11,7 +11,6 @@ type tag = {
   name: string;
 };
 export const sendQuestion = async (data: FormFields) => {
-  
   const token = user?.access;
   // return Promise.resolve(data);
 
