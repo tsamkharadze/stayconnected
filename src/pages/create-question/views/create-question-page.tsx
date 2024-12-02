@@ -27,7 +27,7 @@ type Framework = {
 const CreateQuestionPage = () => {
   const user = useAtomValue(userAtom);
   const { mutate: handleSendForm } = useMutation({
-    mutationFn: (data: any) =>sendQuestion(data, user),
+    mutationFn: (data: any) => sendQuestion(data, user),
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
     },

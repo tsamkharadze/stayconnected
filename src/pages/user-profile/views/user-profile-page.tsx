@@ -6,7 +6,7 @@ import ScreenLg from '@/components/layout/page-containers/screen-lg';
 import { useEffect, useState } from 'react';
 
 const UserProfile = () => {
-  const [profile, setProfile] = useState(undefined)
+  const [profile, setProfile] = useState(undefined);
   const user = useAtomValue(userAtom);
   const token = user?.access;
 
@@ -24,10 +24,10 @@ const UserProfile = () => {
     }
   };
   useEffect(() => {
-    if(user){
-      getUserInfo()
+    if (user) {
+      getUserInfo();
     }
-  }, [user])
+  }, [user]);
   return (
     <ScreenLg>
       <div className='flex flex-col gap-8'>

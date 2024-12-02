@@ -11,9 +11,6 @@ interface UserInfoProps {
   user: User;
 }
 const UserInfo: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
-
-
-
   return (
     <Card>
       <CardHeader className='flex flex-row items-center gap-4'>
