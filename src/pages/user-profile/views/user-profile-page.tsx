@@ -43,7 +43,7 @@ const UserProfile = () => {
           </>
         ) : (
           <>
-            <p className="text-2xl">Please sign in to continue</p>
+            <p className='text-2xl'>Please sign in to continue</p>
             <Button onClick={() => navigate('/login')}>Sign in</Button>
           </>
         )}

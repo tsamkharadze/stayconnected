@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
- 
+
 import { sendQuestion } from './send-question';
 import { useAtomValue } from 'jotai';
 import { userAtom } from '@/store/auth';
@@ -16,12 +16,12 @@ type FormFields = {
   description: string;
   tags: string[];
 };
- 
+
 type Framework = {
   value: string;
   label: string;
 };
- 
+
 const CreateQuestionPage = () => {
   const user = useAtomValue(userAtom);
   const { mutate: handleSendForm } = useMutation({
@@ -33,7 +33,7 @@ const CreateQuestionPage = () => {
       console.error('Error submitting question', error.message);
     },
   });
- 
+
   const {
     register,
     handleSubmit,
@@ -46,7 +46,7 @@ const CreateQuestionPage = () => {
       tags: [],
     },
   });
- 
+
   const title = register('title', {
     required: 'Title should not be empty',
     maxLength: {
@@ -57,14 +57,14 @@ const CreateQuestionPage = () => {
   const description = register('description', {
     required: 'Description should not be empty',
   });
- 
+
   const handleTagsChange = (tags: Framework[]) => {
     console.log('Selected tags', tags);
     const formattedTags = tags.map((tag) => tag.value);
     console.log('formated', formattedTags);
     setValue('tags', formattedTags);
   };
- 
+
   return (
     <ScreenMd>
       <div className='my-4'>
@@ -96,5 +96,5 @@ const CreateQuestionPage = () => {
     </ScreenMd>
   );
 };
- 
+
 export default CreateQuestionPage;

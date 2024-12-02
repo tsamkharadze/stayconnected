@@ -4,7 +4,7 @@ type FormFields = {
   description: string;
   tags: string[];
 };
- 
+
 export const sendQuestion = async (data: FormFields, user: any) => {
   const token = user?.access;
   console.log('user', user);
