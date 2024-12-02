@@ -5,13 +5,7 @@ type FormFields = {
   tags: string[];
 };
 
-export const sendQuestion = async (data: FormFields, user: any) => {
-  const token = user?.access;
-  console.log('user', user);
-  const response = await httpClient.post('/questions', data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const sendQuestion = async (data: FormFields) => {
+  const response = await httpClient.post('/questions', data);
   return response.data;
 };

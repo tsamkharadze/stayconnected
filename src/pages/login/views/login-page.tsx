@@ -12,6 +12,7 @@ import { LoginUser } from '@/components/api/user';
 import { useSetAtom } from 'jotai';
 
 import { userAtom } from '@/store/auth';
+import { setAuthToken } from '@/components/api';
 
 const LoginPage = () => {
   const setuser = useSetAtom(userAtom);
@@ -30,6 +31,7 @@ const LoginPage = () => {
     onSuccess: (data) => {
       if (data) {
         setuser(data);
+        setAuthToken(data.access);
         navigate('/home');
       }
     },
