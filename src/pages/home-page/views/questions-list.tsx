@@ -2,7 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getQuestions } from '@/components/api/questions/index.ts';
 import { useQuery } from '@tanstack/react-query';
-import { questionType, tagsType } from '../types/question.types.ts';
+import { questionType } from '../types/question.types.ts';
 import { Link } from 'react-router-dom';
 
 const QuestionsList = () => {
@@ -35,7 +35,7 @@ const QuestionsList = () => {
 
     return `${day}/${month}/${year}`;
   };
-
+  console.log(questions);
   return (
     <>
       {questions ? (
@@ -66,10 +66,13 @@ const QuestionsList = () => {
                   </p>
                   <div className='flex flex-row justify-between'>
                     <div className='flex flex-row flex-wrap items-start gap-2'>
-                      {question.tags?.map((tag: tagsType) => {
+                      {question.tag_names?.map((tag: string) => {
                         return (
-                          <Badge className='cursor-pointer' key={tag.id}>
-                            {tag.name}
+                          <Badge
+                            className='hover:bg-p cursor-pointer'
+                            key={tag}
+                          >
+                            {tag}
                           </Badge>
                         );
                       })}

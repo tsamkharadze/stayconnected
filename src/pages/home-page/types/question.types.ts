@@ -19,7 +19,7 @@ export type authorType = {
 export type questionType = {
   id: number;
   title: string;
-  tags: tagsType;
+  tag_names: string[];
   description: string;
   answers_count: number;
   created_at: string;

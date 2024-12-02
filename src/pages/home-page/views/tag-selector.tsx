@@ -9,14 +9,30 @@ const TagSelector = () => {
     queryFn: getTags,
   });
 
+  const handleTags = (value: string[]) => {
+    console.log(value);
+  };
+
   return (
     <>
       {tags ? (
-        <ToggleGroup type='multiple'>
+        <ToggleGroup
+          variant='outline'
+          type='multiple'
+          className='items-start justify-start gap-2'
+          size='sm'
+          onValueChange={handleTags}
+        >
           {tags.map((tag: Tags) => {
-            <ToggleGroupItem value={tag.name} key={tag.id}>
-              {tag.name}
-            </ToggleGroupItem>;
+            return (
+              <ToggleGroupItem
+                value={tag.name}
+                key={tag.id}
+                className='hover:bg-primary hover:text-white data-[state=on]:bg-primary data-[state=on]:text-white'
+              >
+                {tag.name}
+              </ToggleGroupItem>
+            );
           })}
         </ToggleGroup>
       ) : (
