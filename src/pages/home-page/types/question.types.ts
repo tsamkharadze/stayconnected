@@ -1,5 +1,10 @@
 export type tagsType = {
-  map: any;
+  [x: string]: any;
+  id: number;
+  name: string;
+};
+
+export type Tags = {
   id: number;
   name: string;
 };
