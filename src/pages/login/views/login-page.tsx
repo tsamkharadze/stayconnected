@@ -43,7 +43,9 @@ const LoginPage = () => {
       <ScreenMd>
         <Card>
           <CardHeader>
-            <CardTitle className='text-2xl font-bold'>Sign In</CardTitle>
+            <CardTitle className='text-center text-2xl font-bold'>
+              Sign In
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -99,7 +101,7 @@ const LoginPage = () => {
                         value={value}
                         type='password'
                         placeholder='password'
-                        className='mb-2 mt-2'
+                        className='mb-4 mt-2'
                       />
                     );
                   }}
@@ -110,25 +112,16 @@ const LoginPage = () => {
                   </span>
                 )}
               </div>
-              <div className='grid gap-4 md:grid-cols-2'>
+              <div className='grid gap-4'>
                 <div>
                   <Button className='w-full' type='submit' size='lg'>
                     Sign In
                   </Button>
                 </div>
-                <div className='w-full text-center font-semibold md:hidden'>
-                  OR
-                </div>
-                <div>
-                  <Link to='/register' className='w-full'>
-                    <Button
-                      className='w-full'
-                      type='button'
-                      size='lg'
-                      variant='secondary'
-                    >
-                      Sign Up
-                    </Button>
+                <div className='cursor-pointer space-x-2 text-center text-sm text-muted-foreground'>
+                  <span>Don't have an account?</span>
+                  <Link to='/register' className='font-semibold text-primary'>
+                    Sign Up
                   </Link>
                 </div>
               </div>
