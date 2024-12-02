@@ -12,7 +12,7 @@ type FormFields = {
   }
 export const sendQuestion = async (data: FormFields) => {
   const user = useAtomValue(userAtom);
-const token = user?.accessToken;
+const token = user?.access;
     // return Promise.resolve(data);
     
     console.log("data", data)
