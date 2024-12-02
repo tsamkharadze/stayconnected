@@ -13,15 +13,10 @@ const UserProfile = () => {
   const [profile, setProfile] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const user = useAtomValue(userAtom);
-  const token = user?.access;
 
   const getUserInfo = async () => {
     try {
-      const response = await httpClient.get('/user/profile/', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await httpClient.get('/user/profile/');
       console.log('fetched user data', response.data);
       setProfile(response.data);
     } catch (error) {
