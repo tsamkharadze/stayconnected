@@ -16,15 +16,13 @@ type FormFields = {
 };
 type tag = {
   name: string;
-}
+};
 type Framework = {
   value: string;
   label: string;
 };
 
- 
 const CreateQuestionPage = () => {
-  
   const { mutate: handleSendForm } = useMutation({
     mutationFn: sendQuestion,
     onSuccess: (data) => {
@@ -34,7 +32,7 @@ const CreateQuestionPage = () => {
       console.error('Error submitting question', error.message);
     },
   });
- 
+
   const {
     register,
     handleSubmit,
@@ -47,24 +45,23 @@ const CreateQuestionPage = () => {
       tags: [],
     },
   });
- 
+
   const title = register('title', {
     required: 'Title should not be empty',
     maxLength: {
-      value: 100, 
+      value: 100,
       message: 'Title should not exceed 100 characters',
     },
   });
   const description = register('description', {
     required: 'Description should not be empty',
   });
- 
-  const handleTagsChange = (tags: Framework[]) => {
-    console.log("Selected tags", tags)
-    const formattedTags = tags.map((tag) =>( {name: tag.value}))
-    console.log("formated", formattedTags)
-    setValue('tags', formattedTags); 
 
+  const handleTagsChange = (tags: Framework[]) => {
+    console.log('Selected tags', tags);
+    const formattedTags = tags.map((tag) => ({ name: tag.value }));
+    console.log('formated', formattedTags);
+    setValue('tags', formattedTags);
   };
 
   return (
@@ -81,24 +78,22 @@ const CreateQuestionPage = () => {
         <div>
           <Label htmlFor='title'>Title</Label>
           <Input {...title} id='title' />
-          <p className='text-red-500 my-2'>{errors.title?.message}</p>
+          <p className='my-2 text-red-500'>{errors.title?.message}</p>
         </div>
         <div>
           <Label htmlFor='description'>Description</Label>
           <Textarea {...description} id='description' />
-          <p className='text-red-500 my-2'>{errors.description?.message}</p>
+          <p className='my-2 text-red-500'>{errors.description?.message}</p>
         </div>
         <div>
           <Label htmlFor='tags'>Tags</Label>
           <FancyMultiSelect onTagsChange={handleTagsChange} />
-          <p className='text-red-500 my-2'>{errors.tags?.message}</p>
+          <p className='my-2 text-red-500'>{errors.tags?.message}</p>
         </div>
         <Button>Add question</Button>
       </FormContainer>
     </ScreenMd>
   );
 };
- 
+
 export default CreateQuestionPage;
- 
- 

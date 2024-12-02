@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 interface UserInfoProps {
   user: User;
 }
-const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({user}) => {
+const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
   return (
     <div>
       <Tabs defaultValue='questions' className='w-full'>
@@ -14,7 +14,7 @@ const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({user}) => {
           <TabsTrigger value='answers'>My Answers</TabsTrigger>
         </TabsList>
         <TabsContent value='questions'>
-         <UserQuestionCards user={user}/>
+          <UserQuestionCards user={user} />
         </TabsContent>
         <TabsContent value='answers'>Change your password here.</TabsContent>
       </Tabs>

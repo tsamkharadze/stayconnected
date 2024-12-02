@@ -10,7 +10,6 @@
     "preview": "vite preview",
     "format": "prettier --write .",
     "prepare": "husky"
-    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
