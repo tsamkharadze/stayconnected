@@ -4,8 +4,13 @@ import { useAtomValue } from 'jotai';
 
 import ScreenLg from '@/components/layout/page-containers/screen-lg';
 import { useEffect, useState } from 'react';
+import UserInfo from '../components/user-info';
+import UserTabs from '../components/user-tabs';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState(undefined);
   const user = useAtomValue(userAtom);
   const token = user?.access;
@@ -31,8 +36,17 @@ const UserProfile = () => {
   return (
     <ScreenLg>
       <div className='flex flex-col gap-8'>
-        {/* <UserInfo user={profile} />
-        <UserTabs user={profile} /> */}
+        {profile ? (
+          <>
+            <UserInfo user={profile} />
+            <UserTabs user={profile} />
+          </>
+        ) : (
+          <>
+            <p className='text-2xl'>Please sign in to continue</p>
+            <Button onClick={() => navigate('/login')}>Sign in</Button>
+          </>
+        )}
         <p>{JSON.stringify(profile)}</p>
       </div>
     </ScreenLg>

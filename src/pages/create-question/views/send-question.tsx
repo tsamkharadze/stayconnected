@@ -2,11 +2,9 @@ import { httpClient } from '@/components/api';
 type FormFields = {
   title: string;
   description: string;
-  tags: tag[];
+  tags: string[];
 };
-type tag = {
-  name: string;
-};
+
 export const sendQuestion = async (data: FormFields, user: any) => {
   const token = user?.access;
   console.log('user', user);

@@ -11,25 +11,26 @@ import { useForm } from 'react-hook-form';
 import { sendQuestion } from './send-question';
 import { useAtomValue } from 'jotai';
 import { userAtom } from '@/store/auth';
+import { useNavigate } from 'react-router-dom';
 type FormFields = {
   title: string;
   description: string;
-  tags: tag[];
+  tags: string[];
 };
-type tag = {
-  name: string;
-};
+
 type Framework = {
   value: string;
   label: string;
 };
 
 const CreateQuestionPage = () => {
+  const navigate = useNavigate();
   const user = useAtomValue(userAtom);
   const { mutate: handleSendForm } = useMutation({
     mutationFn: (data: any) => sendQuestion(data, user),
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
+      navigate('/');
     },
     onError: (error: Error) => {
       console.error('Error submitting question', error.message);
@@ -62,7 +63,7 @@ const CreateQuestionPage = () => {
 
   const handleTagsChange = (tags: Framework[]) => {
     console.log('Selected tags', tags);
-    const formattedTags = tags.map((tag) => ({ name: tag.value }));
+    const formattedTags = tags.map((tag) => tag.value);
     console.log('formated', formattedTags);
     setValue('tags', formattedTags);
   };

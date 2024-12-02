@@ -7,7 +7,7 @@ interface UserInfoProps {
 }
 const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
   return (
-    <div>
+    <div className='w-full'>
       <Tabs defaultValue='questions' className='w-full'>
         <TabsList>
           <TabsTrigger value='questions'>My Questions</TabsTrigger>
@@ -16,7 +16,7 @@ const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
         <TabsContent value='questions'>
           <UserQuestionCards user={user} />
         </TabsContent>
-        <TabsContent value='answers'>Change your password here.</TabsContent>
+        <TabsContent value='answers'>Answer content goes here</TabsContent>
       </Tabs>
     </div>
   );
