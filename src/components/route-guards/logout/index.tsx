@@ -1,12 +1,12 @@
 import { useAtomValue } from 'jotai';
 import { Navigate, Outlet } from 'react-router-dom';
 import React, { PropsWithChildren } from 'react';
-import { userAtom } from '@/store/auth';
+import { meAtom } from '@/store/auth';
 
 export const LogoutGuard: React.FC<PropsWithChildren> = ({ children }) => {
-  const user = useAtomValue(userAtom);
+  const me = useAtomValue(meAtom);
 
-  if (!user) {
+  if (!me) {
     return <Navigate to='/home' />;
   }
 
