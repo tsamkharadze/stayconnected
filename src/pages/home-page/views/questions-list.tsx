@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getQuestions } from '@/components/api/user/index.ts';
+import { getQuestions } from '@/components/api/questions/index.ts';
 import { useQuery } from '@tanstack/react-query';
 import { questionType, tagsType } from '../types/question.types.ts';
 import { Link } from 'react-router-dom';

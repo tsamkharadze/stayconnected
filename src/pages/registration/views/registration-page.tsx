@@ -40,9 +40,11 @@ const RegistrationPage = () => {
       <ScreenMd>
         <Card>
           <CardHeader>
-            <CardTitle className='text-center text-2xl font-bold'>
-              Sign Up
-            </CardTitle>
+            {!isSuccess && (
+              <CardTitle className='text-center text-2xl font-bold'>
+                Sign Up
+              </CardTitle>
+            )}
           </CardHeader>
           <CardContent>
             {isSuccess ? (
