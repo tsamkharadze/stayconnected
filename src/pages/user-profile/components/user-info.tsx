@@ -17,17 +17,17 @@ const UserInfo: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
         <div>
           <Avatar className='size-12 md:size-24'>
             <AvatarImage src='https://github.com/shadcn.png' />
-            <AvatarFallback>{user.name[0]}</AvatarFallback>
+            <AvatarFallback>{user.fullname[0]}</AvatarFallback>
           </Avatar>
         </div>
         <div>
           <CardTitle>
             <p className='truncate text-lg font-bold md:text-2xl'>
-              {user.name}
+              {user.fullname}
             </p>
           </CardTitle>
           <CardDescription className='text-md'>
-            Rating: {user.rating}
+           <p>Rating: {user.rating}</p> 
           </CardDescription>
         </div>
       </CardHeader>

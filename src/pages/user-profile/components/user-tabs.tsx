@@ -16,7 +16,7 @@ const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
         <TabsContent value='questions'>
           <UserQuestionCards user={user} />
         </TabsContent>
-        <TabsContent value='answers'>Change your password here.</TabsContent>
+        <TabsContent value='answers'>Answer content goes here</TabsContent>
       </Tabs>
     </div>
   );

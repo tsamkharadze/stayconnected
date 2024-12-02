@@ -1,15 +1,7 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+
 import { User } from './user';
 import { PropsWithChildren } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router';
+
 
 interface UserInfoProps {
   user: User;
@@ -19,7 +11,11 @@ const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
 }) => {
   return (
     <div className='flex flex-col gap-6'>
-      {user.questions.map((question) => {
+       <p>Questions: {user.questions.length}</p>
+
+
+
+      {/* {user.questions.map((question) => {
         return (
           <Link to='' key={question.id}>
             <Card>
@@ -51,7 +47,7 @@ const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
             </Card>
           </Link>
         );
-      })}
+      })} */}
     </div>
   );
 };
