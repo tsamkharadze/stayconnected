@@ -12,6 +12,7 @@ import { LoginUser } from '@/components/api/user';
 import { useSetAtom } from 'jotai';
 
 import { userAtom } from '@/store/auth';
+import { setAuthToken } from '@/components/api';
 
 const LoginPage = () => {
   const setuser = useSetAtom(userAtom);
@@ -28,10 +29,10 @@ const LoginPage = () => {
     mutationKey: ['login'],
     mutationFn: LoginUser,
     onSuccess: (data) => {
-      if (data) {
-        setuser(data);
-        navigate('/home');
-      }
+      console.log(data?.access);
+      setAuthToken(data?.access);
+      setuser(data);
+      navigate('/home');
     },
   });
 

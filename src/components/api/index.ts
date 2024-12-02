@@ -11,5 +11,4 @@ export const setAuthToken = (token: string | null) => {
     delete httpClient.defaults.headers.common['Authorization'];
   }
 };
-
 export const httpClient = axios.create(axiosConfig);
