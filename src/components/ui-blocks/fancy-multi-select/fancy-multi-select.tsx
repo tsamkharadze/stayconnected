@@ -16,39 +16,46 @@ type Framework = Record<'value' | 'label', string>;
 
 const FRAMEWORKS = [
   {
-    value: 'next.js',
-    label: 'Next.js',
+    value: 'JavaScript',
+    label: 'JavaScript',
   },
   {
-    value: 'sveltekit',
-    label: 'SvelteKit',
+    value: 'React',
+    label: 'React',
   },
   {
-    value: 'nuxt.js',
-    label: 'Nuxt.js',
+    value: 'Node.js',
+    label: 'Node.js',
   },
   {
-    value: 'remix',
-    label: 'Remix',
+    value: 'Python',
+    label: 'Python',
   },
   {
-    value: 'astro',
-    label: 'Astro',
+    value: 'iOS',
+    label: 'iOS',
   },
   {
-    value: 'wordpress',
-    label: 'WordPress',
+    value: 'Machine Learning',
+    label: 'Machine Learning',
   },
   {
-    value: 'express.js',
-    label: 'Express.js',
+    value: 'Cloud Computing',
+    label: 'Cloud Computing',
   },
   {
-    value: 'nest.js',
-    label: 'Nest.js',
+    value: 'AI',
+    label: 'AI',
+  },
+  {
+    value: 'Blockchain',
+    label: 'Blockchain',
+  },
+  {
+    value: 'DevOps',
+    label: 'DevOps',
   },
 ] satisfies Framework[];
-
 type FancyMultiSelectProps = {
   onTagsChange: (tags: Framework[]) => void;
 };
