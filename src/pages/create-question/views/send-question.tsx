@@ -1,7 +1,7 @@
 import { httpClient } from '@/components/api';
 import { userAtom } from '@/store/auth';
 import { useAtomValue } from 'jotai';
-const user = useAtomValue(userAtom);
+
 type FormFields = {
   title: string;
   description: string;
@@ -11,6 +11,7 @@ type tag = {
   name: string;
 };
 export const sendQuestion = async (data: FormFields) => {
+  const user = useAtomValue(userAtom);
   const token = user?.access;
   // return Promise.resolve(data);
 
