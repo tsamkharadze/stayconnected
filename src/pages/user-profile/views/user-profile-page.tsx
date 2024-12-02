@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const UserProfile = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState(undefined);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const user = useAtomValue(userAtom);
   const token = user?.access;
 
@@ -27,12 +27,12 @@ const UserProfile = () => {
     } catch (error) {
       console.error('Error fetching profile data:', error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
   useEffect(() => {
     if (user) {
-      setLoading(true)
+      setLoading(true);
       getUserInfo();
     }
   }, [user]);
@@ -40,7 +40,7 @@ const UserProfile = () => {
     <ScreenLg>
       <div className='flex flex-col gap-8'>
         {loading ? (
-          <div className="flex justify-center items-center">
+          <div className='flex items-center justify-center'>
             <p>Loading...</p>
           </div>
         ) : profile ? (
