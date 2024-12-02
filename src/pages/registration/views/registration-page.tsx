@@ -38,18 +38,16 @@ const RegistrationPage = () => {
   return (
     <>
       <ScreenMd>
-        <Card>
-          <CardHeader>
-            {!isSuccess && (
+        {isSuccess ? (
+          <SuccessMsg />
+        ) : (
+          <Card>
+            <CardHeader>
               <CardTitle className='text-center text-2xl font-bold'>
                 Sign Up
               </CardTitle>
-            )}
-          </CardHeader>
-          <CardContent>
-            {isSuccess ? (
-              <SuccessMsg />
-            ) : (
+            </CardHeader>
+            <CardContent>
               <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <Label htmlFor='full_name'>Full Name</Label>
@@ -200,9 +198,9 @@ const RegistrationPage = () => {
                   </div>
                 </div>
               </FormContainer>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        )}
       </ScreenMd>
     </>
   );
