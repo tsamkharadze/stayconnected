@@ -8,12 +8,19 @@ export interface Answer {
 }
 export interface Question {
   id: string;
-  author: string;
+  author: Author;
   title: string;
   description: string;
-  tags: string[];
-  date: string;
+  tag_names: string[];
+  created_at: string;
   answers: Answer[];
+}
+export interface Author {
+  id: string;
+  fullname: string;
+  email: string;
+  rating: number;
+  questions: Question[];
 }
 export interface User {
   id: string;

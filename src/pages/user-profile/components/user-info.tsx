@@ -5,7 +5,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User } from './user';
+import { User } from '../../../types/interfaces';
 import { PropsWithChildren } from 'react';
 interface UserInfoProps {
   user: User;

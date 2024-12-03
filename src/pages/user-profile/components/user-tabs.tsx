@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import UserQuestionCards from './user-question-cards';
-import { User } from './user';
+import UserQuestionCards from '../../../components/ui-blocks/question-cards/question-cards';
+import { User } from '../../../types/interfaces';
 import { PropsWithChildren } from 'react';
 interface UserInfoProps {
   user: User;
@@ -14,7 +14,7 @@ const UserTabs: React.FC<PropsWithChildren<UserInfoProps>> = ({ user }) => {
           <TabsTrigger value='answers'>My Answers</TabsTrigger>
         </TabsList>
         <TabsContent value='questions'>
-          <UserQuestionCards user={user} />
+          <UserQuestionCards questions={user.questions} />
         </TabsContent>
         <TabsContent value='answers'>Answer content goes here</TabsContent>
       </Tabs>

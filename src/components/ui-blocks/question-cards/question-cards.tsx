@@ -1,24 +1,37 @@
-import { User } from './user';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
+import { Question } from '../../../types/interfaces';
 import { PropsWithChildren } from 'react';
+import useFormattedDate from '../../../custom-hooks/use-formatted-date';
 
-interface UserInfoProps {
-  user: User;
+interface QuestionCardProps {
+  questions: Question[];
 }
-const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
-  user,
+const QuestionCards: React.FC<PropsWithChildren<QuestionCardProps>> = ({
+  questions,
 }) => {
   return (
     <div className='flex flex-col gap-6'>
-      <p>Questions: {user.questions.length}</p>
+      {questions.map((question) => {
+        const isoDate = question.created_at;
+        const formattedDate = useFormattedDate(isoDate);
 
-      {/* {user.questions.map((question) => {
+        const numberOfAnswers = question.answers?.length || 0;
         return (
           <Link to='' key={question.id}>
             <Card>
               <CardHeader>
                 <CardTitle className='text-lg'>{question.title}</CardTitle>
                 <CardDescription>
-                  {question.author} • {question.date}
+                  {question.author.fullname} • {formattedDate}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -28,7 +41,7 @@ const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
               </CardContent>
               <CardFooter className='flex justify-between'>
                 <div className='flex gap-2'>
-                  {question.tags.map((tag) => {
+                  {question.tag_names.map((tag) => {
                     return (
                       <Badge className='cursor-pointer' key={tag}>
                         {tag}
@@ -37,14 +50,14 @@ const UserQuestionCards: React.FC<PropsWithChildren<UserInfoProps>> = ({
                   })}
                 </div>
                 <p className='text-sm text-muted-foreground'>
-                  Answers: {question.answers.length}
+                  Answers: {numberOfAnswers}
                 </p>
               </CardFooter>
             </Card>
           </Link>
         );
-      })} */}
+      })}
     </div>
   );
 };
-export default UserQuestionCards;
+export default QuestionCards;
