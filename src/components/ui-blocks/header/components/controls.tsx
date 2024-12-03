@@ -10,15 +10,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { LogOut, User } from 'lucide-react';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 import { meAtom, userAtom } from '@/store/auth';
 const Controls: React.FC = () => {
   const setUser = useSetAtom(userAtom);
-  const me = useAtomValue(meAtom);
+  const [me, setMe] = useAtom(meAtom);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setUser(null);
+    setMe(null);
     localStorage.removeItem('data');
     navigate('/home');
   };
