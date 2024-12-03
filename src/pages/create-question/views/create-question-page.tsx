@@ -9,8 +9,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { sendQuestion } from './send-question';
-import { useAtomValue } from 'jotai';
-import { userAtom } from '@/store/auth';
+
 import { useNavigate } from 'react-router-dom';
 type FormFields = {
   title: string;
@@ -25,9 +24,8 @@ type Framework = {
 
 const CreateQuestionPage = () => {
   const navigate = useNavigate();
-  const user = useAtomValue(userAtom);
   const { mutate: handleSendForm } = useMutation({
-    mutationFn: (data: any) => sendQuestion(data, user),
+    mutationFn: (data: any) => sendQuestion(data),
     onSuccess: (data) => {
       console.log('Question submitted successfully', data);
       navigate('/');

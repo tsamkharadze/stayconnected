@@ -10,21 +10,23 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { LogOut, User } from 'lucide-react';
-import { useAtom } from 'jotai';
-import { userAtom } from '@/store/auth';
+import { useAtom, useSetAtom } from 'jotai';
+import { meAtom, userAtom } from '@/store/auth';
 const Controls: React.FC = () => {
-  const [user, setUser] = useAtom(userAtom);
+  const setUser = useSetAtom(userAtom);
+  const [me, setMe] = useAtom(meAtom);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     setUser(null);
+    setMe(null);
     localStorage.removeItem('data');
     navigate('/home');
   };
 
   return (
     <div>
-      {user ? (
+      {me ? (
         <div className='flex items-center gap-4'>
           <Link to='createQuestion'>
             <Button variant='default'>Add</Button>
@@ -39,12 +41,12 @@ const Controls: React.FC = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-56' align='end' forceMount>
               <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <User className='mr-2 h-4 w-4' />
-                  <Link to='/profile'>
+                <Link to='/profile'>
+                  <DropdownMenuItem>
+                    <User className='mr-2 h-4 w-4' />
                     <span>Profile</span>
-                  </Link>
-                </DropdownMenuItem>
+                  </DropdownMenuItem>
+                </Link>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuItem className='text-red-600' onClick={handleLogout}>
