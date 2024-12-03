@@ -15,7 +15,7 @@ export interface Question {
   created_at: string;
   answers: Answer[];
 }
-export interface Author{
+export interface Author {
   id: string;
   fullname: string;
   email: string;

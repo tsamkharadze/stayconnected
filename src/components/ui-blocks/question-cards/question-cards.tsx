@@ -1,7 +1,14 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import { Question} from '../../../types/interfaces';
+import { Question } from '../../../types/interfaces';
 import { PropsWithChildren } from 'react';
 import useFormattedDate from '../../../custom-hooks/use-formatted-date';
 
@@ -11,15 +18,13 @@ interface QuestionCardProps {
 const QuestionCards: React.FC<PropsWithChildren<QuestionCardProps>> = ({
   questions,
 }) => {
- 
   return (
     <div className='flex flex-col gap-6'>
-
       {questions.map((question) => {
-        const isoDate=question.created_at;
+        const isoDate = question.created_at;
         const formattedDate = useFormattedDate(isoDate);
-        
-const numberOfAnswers = question.answers?.length || 0;
+
+        const numberOfAnswers = question.answers?.length || 0;
         return (
           <Link to='' key={question.id}>
             <Card>
@@ -45,7 +50,7 @@ const numberOfAnswers = question.answers?.length || 0;
                   })}
                 </div>
                 <p className='text-sm text-muted-foreground'>
-                Answers: {numberOfAnswers}
+                  Answers: {numberOfAnswers}
                 </p>
               </CardFooter>
             </Card>

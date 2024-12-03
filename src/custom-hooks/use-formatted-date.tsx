@@ -8,7 +8,7 @@ const useFormattedDate = (isoString: string) => {
       const date = new Date(isoString);
       const options: Intl.DateTimeFormatOptions = {
         day: 'numeric',
-        month: 'short', 
+        month: 'short',
         year: 'numeric',
       };
       return date.toLocaleDateString('en-GB', options);
